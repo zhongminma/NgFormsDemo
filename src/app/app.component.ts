@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   public createForm() {
     this.myForm = this.fb.group({
       name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.pattern('[a-z0-9.@]*')]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     })
   }
@@ -27,5 +27,8 @@ export class AppComponent implements OnInit {
         return;
     }
     console.log(this.myForm.value);
+  }
+  public pageReset() {
+    this.myForm.reset();
   }
 }
